@@ -105,11 +105,11 @@ module WebsocketRails
     def execute(actions)
       actions.map do |action|
         unless Rails.env.test?
-+          EM.next_tick { action.resume }
-+        else
-+          # In tests we need to process the actions immediately.
-+          action.resume
-+        end
+          EM.next_tick { action.resume }
+        else
+          # In tests we need to process the actions immediately.
+          action.resume
+        end
       end
     end
 
